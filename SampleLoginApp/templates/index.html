@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> Company </title>
+  </head>
+  <body>
+    <center>
+      <br><br>
+      <img src="{{ url_for('static', filename='images/dospot.png') }}" alt="DO-Spot Co." height="100" width="100">
+      <h1> Welcome to DO-SPOT </h1> <br>
+      <a href="{{url_for("maintenance")}}">SignUp</a>
+	    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <a href="{{ url_for("login") }}">LogIn</a> <br>
+    </center>
+  </body>
+</html>

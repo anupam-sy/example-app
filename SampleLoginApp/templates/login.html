@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+  </head>
+  <body>
+
+    {% if error %}
+    <h4 style="color:red"> {{ error }} </h4>
+    {% endif %}
+
+    <center>
+    <h1> Login Dashboard - DOSPOT </h1>  
+    <form action="{{ url_for("login") }}" method="post"> <br><br><br><br>
+      Username : <input type="text" name="t1"> <br><br>
+      Password : <input type="password" name="t2"> <br><br>
+      <input type="submit" name="Submit"> &nbsp; &nbsp;
+      <input type="reset" name="Reset">
+    </form>
+  </center>
+  </body>
+</html>
