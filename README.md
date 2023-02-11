@@ -2,7 +2,7 @@
 This repository contains MyCompany App written in python programming language using flask framework of web development.
 
 ## Prerequisites
-Below prerequisites must be fulfilled for successful execution of code. Assumption is that you are using linux operating system.
+Below prerequisites must be fulfilled for successful execution of code.
 
 ### Software Requirement
 Resources in this repository are meant for use with Python 3.x (check the version using `python3 --version`) and pip3 (check the version using `pip3 --version`). If you don't have the compatible version, download it from official python repository.
