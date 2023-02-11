@@ -23,8 +23,15 @@ pip install -r requirements.txt
 
 2. Within the virtual environment, you can use the command `pip` instead of `pip3` and `python` instead of `python3`.
 
-## Execution
+## Run the app
 To start the web server, execute the below command -
 ```
     python run.py
+```
+
+## Test the app
+To check the webapp, open a browser and go to URL -
+```
+    http://<IP>:Port
+    http://127.0.0.1:4999/
 ```
