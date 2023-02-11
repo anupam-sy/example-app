@@ -1,4 +1,2 @@
-fenv/*
-SampleLoginApp/main02.py
-SampleLoginApp/main03.py
-SampleLoginApp/__pycache__/*
+mycompany-app-venv/*
+mycompany_app/__pycache__/*
