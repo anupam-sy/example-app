@@ -21,7 +21,7 @@ If pip3 is installed but not working, upgrade to the latest version using the fo
 ```
 
 ### Bootstrap Virtual Environment
-We will need to create a virtual environment (using python's default package "venv") and install all the dependencies
+We will need to create a virtual environment (using python's default package "venv") and install all the dependencies.
 ```
 python3 -m venv mycompany-app-venv # on Windows, use "python -m venv venv" instead
 source mycompany-app-venv/bin/activate # on Windows, use "venv\Scripts\activate" instead
@@ -40,5 +40,7 @@ After activating the virtual environemnt, use the following command to installed
 ```
 
 ## Execution
-To start the web server, execute the below command
+To start the web server, execute the below command -
+```
     python run.py
+```
