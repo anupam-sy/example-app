@@ -1,4 +1,4 @@
-# My Company App
+# MyCompany App
 This repository contains MyCompany App written in python programming language using flask framework of web development.
 
 ## Prerequisites
@@ -19,19 +19,33 @@ pip install -r requirements.txt
 ```
 
 **Note:**
-1. Once activated, the virtual environment bin directory will be added at the beginning of the $PATH variable. Also your shell prompt will change and it will show the name of the virtual environment you are currently using. In our case that is, `mycompany-app-venv`. Once you are done with your work, to deactivate the environment, simply type `deactivate` and you will return to your normal shell.
+- Activation makes the virtual environment the default Python interpreter for the duration of a shell session. Because, This will prepend that directory to your PATH, so that running python will invoke the virtual environment’s Python interpreter. As an indication of virtual environment activation, current shell prompt will prepend the name of the virtual environment you are currently using.
 
-2. Within the virtual environment, you can use the command `pip` instead of `pip3` and `python` instead of `python3`.
+- To deactivate the environment, simply type `deactivate` and you will return to your normal shell.
 
-## Run the app
-To start the web server, execute the below command -
+- Within the virtual environment, you can use the command `pip` instead of `pip3` and `python` instead of `python3`.
+
+## Run and Test the App on Machine
+To start the web server of the app, execute the below command -
 ```
     python run.py
 ```
 
-## Test the app
 To check the webapp, open a browser and go to URL -
 ```
     http://<IP>:Port
     http://127.0.0.1:4999/
 ```
+
+## Run and Test the App on Docker
+1. Clone the repository and switch inside the directory.
+2. Build the docker image using below command: 
+    `docker build . -t mycompany-app-img:latest`
+3. To run the docker container from built image in the background with port mapping, use below command: 
+    `docker run -d -p 5000:4999 --name mycompany-container mycompany-app-img`
+4. To test the app on host machine, open the browser or use curl command: 
+    `curl http://localhost:5000`
+
+**Note:** 
+- . tells docker about the path of the Dockerfile.
+- Port mapping is used to access the services running inside a Docker container. In the above case, we can now access the application using port 5000 on the host machine.
