@@ -1,4 +1,4 @@
-# Docker file for HelloWorld WebApp
+# Docker file for MyCompany WebApp
 FROM ubuntu
 MAINTAINER anupam-sy
 # Install the tools required for the project
