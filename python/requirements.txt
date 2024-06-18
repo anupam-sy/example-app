@@ -1,2 +1,2 @@
-flask==2.2.2
+flask
 pylint==2.16.1

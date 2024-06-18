@@ -1,3 +1,7 @@
+"""
+This module uses flask web framework to deploy a sample web application.
+"""
+
 from flask import Flask, redirect, url_for, render_template, request, session
 from .validlogin import valid_login
 
