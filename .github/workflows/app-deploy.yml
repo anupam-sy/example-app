@@ -73,3 +73,5 @@ jobs:
       - name: Log out from Docker Registry
         if: always()
         run: docker logout ghcr.io
+
+        
