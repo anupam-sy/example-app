@@ -32,13 +32,13 @@ jobs:
           args: >
             -Dsonar.organization=anupam-sy
             -Dsonar.projectKey=anupam-sy_mycompany-flask-app
-            -Dsonar.scm.enabled=true
-            -Dsonar.qualitygate=""
-            -Dsonar.sources=./python/src
+            -Dsonar.sources=./python
             -Dsonar.exclusions=**/test/**
             -Dsonar.python.version=3.x
             -Dsonar.log.level=INFO
             -Dsonar.verbose=true
+            -Dsonar.scm.enabled=true
+            -Dsonar.scm.exclusions.disabled = true
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
