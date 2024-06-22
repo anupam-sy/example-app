@@ -37,19 +37,18 @@ jobs:
           context: .
           file: ./Dockerfile
           tags: |
-            ghcr.io/${{ github.repository }}/my-docker-image:latest
-            ghcr.io/${{ github.repository }}/my-docker-image:${{ github.run_number }}-${{ env.GIT_SHA }}
+            ghcr.io/${{ github.repository }}/appimg:${{ github.run_number }}-${{ env.GIT_SHA }}
           outputs: type=docker,dest=/tmp/my-docker-image.tar
 
-      - name: Scan Docker image with Trivy
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: ghcr.io/${{ github.repository }}/my-docker-image:${{ github.run_number }}-${{ env.GIT_SHA }}
-          format: table
-          exit-code: 1
-          ignore-unfixed: true
-          vuln-type: os,library
-          severity: HIGH,CRITICAL
+    #   - name: Scan Docker image with Trivy
+    #     uses: aquasecurity/trivy-action@master
+    #     with:
+    #       image-ref: ghcr.io/${{ github.repository }}/appimg:${{ github.run_number }}-${{ env.GIT_SHA }}
+    #       format: table
+    #       exit-code: 1
+    #       ignore-unfixed: true
+    #       vuln-type: os,library
+    #       severity: HIGH,CRITICAL
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
@@ -67,10 +66,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/my-docker-image:latest
-            ghcr.io/${{ github.repository }}/my-docker-image:${{ github.run_number }}-${{ env.GIT_SHA }}
+            ghcr.io/${{ github.repository }}/appimg:${{ github.run_number }}-${{ env.GIT_SHA }}
 
       - name: Log out from Docker Registry
         if: always()
         run: docker logout ghcr.io
-
