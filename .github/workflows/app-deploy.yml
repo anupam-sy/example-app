@@ -3,10 +3,10 @@ name: Build, Scan, and Deploy Docker Image
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 jobs:
@@ -74,4 +74,3 @@ jobs:
         if: always()
         run: docker logout ghcr.io
 
-        
