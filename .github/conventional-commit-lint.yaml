@@ -1,0 +1,5 @@
+# Config for GitHub App that ensures that commit messages and pull requests are based on conventionalcommits.org 
+# https://github.com/googleapis/repo-automation-bots/tree/main/packages/conventional-commit-lint
+
+enabled: true
+always_check_pr_title: true
