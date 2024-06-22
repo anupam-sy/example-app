@@ -32,6 +32,10 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: "https://sonarcloud.io"
+        with:
+          args: >
+            -Dsonar.organization=anupam-sy
+            -Dsonar.projectKey=anupam-sy_mycompany-flask-app
 
       - name: Extract Git commit SHA
         id: get_sha
