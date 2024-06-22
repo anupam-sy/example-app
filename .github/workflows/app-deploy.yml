@@ -27,6 +27,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: .
+
       - name: Extract Git commit SHA
         id: get_sha
         run: echo "GIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
@@ -49,14 +56,6 @@ jobs:
     #       ignore-unfixed: true
     #       vuln-type: os,library
     #       severity: HIGH,CRITICAL
-
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dproject.settings=sonar-project.properties
 
       - name: Push Docker image
         if: success()
