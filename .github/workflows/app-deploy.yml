@@ -32,7 +32,9 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          projectBaseDir: ${{ env.GITHUB_WORKSPACE }}
+          args: >
+            -Dproject.settings=${env.GITHUB_WORKSPACE}/sonar-project.properties
+        #   projectBaseDir: ${{ env.GITHUB_WORKSPACE }}
 
       - name: Extract Git commit SHA
         id: get_sha
