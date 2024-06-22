@@ -30,7 +30,9 @@ jobs:
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} GITHUB_WORKSPACE
+        with:
+          projectBaseDir: ${{ env.GITHUB_WORKSPACE }}
 
       - name: Extract Git commit SHA
         id: get_sha
