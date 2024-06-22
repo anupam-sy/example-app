@@ -31,8 +31,6 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          projectBaseDir: .
 
       - name: Extract Git commit SHA
         id: get_sha
