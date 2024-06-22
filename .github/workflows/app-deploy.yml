@@ -38,7 +38,7 @@ jobs:
             -Dsonar.log.level=INFO
             -Dsonar.verbose=true
             -Dsonar.scm.enabled=true
-            -Dsonar.scm.exclusions.disabled = true
+            -Dsonar.scm.exclusions.disabled=true
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
