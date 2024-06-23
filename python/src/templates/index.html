@@ -5,13 +5,13 @@
     <title> Company </title>
   </head>
   <body>
-    <center>
+    <div style="text-align:center">
       <br><br>
       <img src="{{ url_for('static', filename='images/mycompany.png') }}" alt="My Co." height="100" width="100">
       <h1> Welcome to MyCompany </h1> <br>
       <a href="{{url_for("maintenance")}}">SignUp</a>
 	    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       <a href="{{ url_for("login") }}">LogIn</a> <br>
-    </center>
+    </div>
   </body>
 </html>

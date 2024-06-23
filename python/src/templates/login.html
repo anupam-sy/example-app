@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Login Page</title>
   </head>
@@ -9,7 +9,7 @@
     <h4 style="color:red"> {{ error }} </h4>
     {% endif %}
 
-    <center>
+    <div style="text-align:center">
     <h1> My Company - Login Dashboard </h1>  
     <form action="{{ url_for("login") }}" method="post"> <br><br><br><br>
       Username : <input type="text" name="t1"> <br><br>
@@ -17,6 +17,6 @@
       <input type="submit" name="Submit"> &nbsp; &nbsp;
       <input type="reset" name="Reset">
     </form>
-  </center>
+  </div>
   </body>
 </html>
