@@ -47,11 +47,11 @@ To check the webapp, open a browser and hit the below URL -
 1. Clone the repository and switch inside the directory.
 2. Build the docker image using below command: 
 ```
-    docker build . -t example-app:latest
+    docker build . -t eapp:latest
 ```
 3. To run the docker container from built image in the background with port mapping, use below command: 
 ```
-    docker run -d -p 5000:4999 --name example-app-container example-app:latest
+    docker run -d -p 5000:4999 --name eapp-container eapp:latest
 ```
 4. To test the app on host machine, open the browser or use curl command: 
 ```
