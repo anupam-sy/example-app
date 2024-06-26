@@ -1,4 +1,4 @@
-name: Build, Scan, and Deploy Docker Image
+name: Build and Release
 
 on:
   push:
@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-scan-and-deploy:
+  build-and-release:
     runs-on: ubuntu-latest
 
     steps:
@@ -52,13 +52,13 @@ jobs:
           context: .
           file: ./Dockerfile
           tags: |
-            ghcr.io/${{ github.repository }}/appimg:${{ github.run_number }}-${{ env.GIT_SHA }}
-          outputs: type=docker,dest=/tmp/my-docker-image.tar
+            ghcr.io/${{ github.repository }}/exampleapp:${{ github.run_number }}-${{ env.GIT_SHA }}
+          outputs: type=docker,dest=/tmp/exampleapp.tar
 
     #   - name: Scan Docker image with Trivy
     #     uses: aquasecurity/trivy-action@master
     #     with:
-    #       image-ref: ghcr.io/${{ github.repository }}/appimg:${{ github.run_number }}-${{ env.GIT_SHA }}
+    #       image-ref: ghcr.io/${{ github.repository }}/exampleapp:${{ github.run_number }}-${{ env.GIT_SHA }}
     #       format: table
     #       exit-code: 1
     #       ignore-unfixed: true
@@ -73,8 +73,16 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/appimg:${{ github.run_number }}-${{ env.GIT_SHA }}
+            ghcr.io/${{ github.repository }}/exampleapp:${{ github.run_number }}-${{ env.GIT_SHA }}
 
       - name: Log out from Docker Registry
         if: always()
         run: docker logout ghcr.io
+
+      - name: Release Please
+        id: release
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target-branch: ${{ github.ref_name }}
