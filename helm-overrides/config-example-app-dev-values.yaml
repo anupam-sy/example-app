@@ -1,0 +1,14 @@
+# Default values for config-example-app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+serviceAccountCreation: true
+serviceAccount:
+  - name: "ksa-dev-example-app-01"
+    automountServiceAccountToken: true
+    annotations:
+      iam.gke.io/gcp-service-account: "gsa-dev-example-app-01@project-goarch.iam.gserviceaccount.com"
+  - name: "ksa-dev-example-app-02"
+    automountServiceAccountToken: true
+    annotations:
+      iam.gke.io/gcp-service-account: "gsa-dev-example-app-02@project-goarch.iam.gserviceaccount.com"
