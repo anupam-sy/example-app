@@ -1,12 +1,20 @@
-name: Build and Release
+name: Feature Build
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Choose the environment to deploy"
+        required: true
+        default: "dev"
+        type: choice
+        options: 
+          - dev
+          - int
+          - pre
 
 jobs:
-  build-and-release:
+  feature-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -44,13 +52,13 @@ jobs:
           context: .
           file: ./Dockerfile
           tags: |
-            ghcr.io/${{ github.repository }}/eapp:release-${{ github.run_number }}-${{ env.GIT_SHA }}
+            ghcr.io/${{ github.repository }}/eapp:${{ github.event.inputs.environment }}-${{ github.run_number }}-${{ env.GIT_SHA }}
           outputs: type=docker,dest=/tmp/eapp.tar
 
     #   - name: Scan Docker image with Trivy
     #     uses: aquasecurity/trivy-action@master
     #     with:
-    #       image-ref: ghcr.io/${{ github.repository }}/eapp:release-${{ github.run_number }}-${{ env.GIT_SHA }}
+    #       image-ref: ghcr.io/${{ github.repository }}/eapp:${{ github.event.inputs.environment }}-${{ github.run_number }}-${{ env.GIT_SHA }}
     #       format: table
     #       exit-code: 1
     #       ignore-unfixed: true
@@ -65,16 +73,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/eapp:release-{{ github.run_number }}-${{ env.GIT_SHA }}
+            ghcr.io/${{ github.repository }}/eapp:${{ github.event.inputs.environment }}-${{ github.run_number }}-${{ env.GIT_SHA }}
 
       - name: Log out from Docker Registry
         if: always()
         run: docker logout ghcr.io
-
-      - name: Release Please
-        id: release
-        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-        uses: googleapis/release-please-action@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          target-branch: ${{ github.ref_name }}
