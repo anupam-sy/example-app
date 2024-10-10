@@ -65,7 +65,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/eapp:release-{{ github.run_number }}-${{ env.GIT_SHA }}
+            ghcr.io/${{ github.repository }}/eapp:release-${{ github.run_number }}-${{ env.GIT_SHA }}
 
       - name: Log out from Docker Registry
         if: always()
