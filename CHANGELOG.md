@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.0](https://github.com/anupam-sy/example-app/compare/v1.0.0...v1.1.0) (2024-10-24)
+
+
+### Features
+
+* added helm charts and github workflow ([#18](https://github.com/anupam-sy/example-app/issues/18)) ([8e7d416](https://github.com/anupam-sy/example-app/commit/8e7d416be7a3c4826a42543ec3fd97d46b7f0976))
+* updated the dockefile and readme ([#22](https://github.com/anupam-sy/example-app/issues/22)) ([6d1a58c](https://github.com/anupam-sy/example-app/commit/6d1a58c3a6b57d1001ff6141329d04332a898b4f))
+* updated the release workflow ([#21](https://github.com/anupam-sy/example-app/issues/21)) ([bdd3f24](https://github.com/anupam-sy/example-app/commit/bdd3f24e0cb3ad4024af3951eecaf54a0304b89e))
+* updated the workflow files ([#20](https://github.com/anupam-sy/example-app/issues/20)) ([a6c91f7](https://github.com/anupam-sy/example-app/commit/a6c91f7fda0734d40d767d53250fc1685c0abf6f))
+
 ## 1.0.0 (2024-06-26)
 
 
