@@ -45,13 +45,15 @@ To check the webapp, open a browser and hit the below URL -
 
 ## Run and Test the App on Docker
 1. Clone the repository and switch inside the directory.
-2. Build the docker image using below command: 
+2. Build the docker image using one of below command: 
 ```
-    docker build . -t eapp:latest
+    docker build -t eapp:latest .
+    docker build -t eapp:latest -f Dockerfile.dev .
 ```
-3. To run the docker container from built image in the background with port mapping, use below command: 
+3. To run the docker container from built image in the background with port mapping, use one of below command: 
 ```
-    docker run -d -p 5000:4999 --name eapp-container eapp:latest
+    docker run -d -p 5000:4999 --name eapp-container eapp:latest # To explicitly specify the what port to map in the form, <host_port>:<container_port>
+    docker run -d -P --name eapp-container eapp:latest # To map the exposed port (via EXPOSE) to random ports on the host machine
 ```
 4. To test the app on host machine, open the browser or use curl command: 
 ```
@@ -59,5 +61,11 @@ To check the webapp, open a browser and hit the below URL -
 ```
 
 **Note:** 
-- . tells docker about the path of the Dockerfile.
+- ( . ) tells about the build context. The build context is the current directory (.), which should contain your application code and the Dockerfile. Pass the Dockerfile, if its name is not exactly Dockerfile.
 - Port mapping is used to access the services running inside a Docker container. In the above case, we can now access the application using port 5000 on the host machine.
+
+## References
+- https://www.warp.dev/terminus/docker-logs-tail
+- https://www.warp.dev/terminus/docker-expose-port
+- https://www.warp.dev/terminus/docker-exec-container
+- https://www.warp.dev/terminus/docker-start-container
