@@ -1,8 +1,8 @@
 # Stage 01: Build
-ARG IMAGE_TAG=latest
-FROM ubuntu:$IMAGE_TAG AS builder
+ARG IMAGE_TAG=3.10-slim
+FROM python:$IMAGE_TAG
 
-# labels for docker image
+# Labels for docker image
 LABEL maintainer="Anupam Yadav"
 LABEL email="anupaminit@gmail.com"
 
@@ -11,42 +11,23 @@ ARG GROUPNAME=$USERNAME
 ARG USERID=1100
 ARG GROUPID=$USERID
 
-# check the current user and create a new user
+# Check the current user and create a new user
 RUN whoami
 RUN groupadd --gid $GROUPID $GROUPNAME && useradd --uid $USERID --gid $GROUPID -m $USERNAME
 
 # Install the tools required for the project
-RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-pip \
-    python3-venv
-
-# Copy the entire project files to a directory
-COPY python /app
-
-# Install all the required python packages
-RUN pip3 install --no-cache-dir --break-system-packages -r /app/requirements.txt
-
-# Stage 02: Run
-FROM python:3.10-slim
-
-ARG USERNAME=python
-ARG GROUPNAME=$USERNAME
-ARG USERID=1100
-ARG GROUPID=$USERID
-
-# check the current user and create a new user
-RUN whoami
-RUN groupadd --gid $GROUPID $GROUPNAME && useradd --uid $USERID --gid $GROUPID -m $USERNAME
-
-COPY --from=builder /app /app
-
-# Switch to project directory
 WORKDIR /app
 
-# Chnage the user to newly created user
+# Copy the content of source folder (project files) to a directory
+COPY python .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Change the user to newly created user and verify it
 USER $USERNAME
 RUN whoami
 
-# Run the main application file on container startup. 
+# Expose the container port
+EXPOSE 4999
+
+# Run the main application file on container startup
 CMD ["python3", "run.py"]
